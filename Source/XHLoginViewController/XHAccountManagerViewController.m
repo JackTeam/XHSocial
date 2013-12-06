@@ -35,24 +35,68 @@
 }
 
 - (void)login {
-    User *loginUser = [User nb_findFirst];
-    if ([loginUser.email isEqualToString:self.emailTextField.text] && [loginUser.password isEqualToString:self.passwordTextField.text]) {
+    NSString *email = self.emailTextField.text;
+    NSString *password = self.passwordTextField.text;
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setValue:email forKey:@"email"];
+    [parameters setValue:password forKey:@"password"];
+    
+    [[XHApiClient sharedClient] GETRequestForPathName:@"login.php" parameters:parameters success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"JSON : %@", JSON);
+        if ([[JSON valueForKey:@"result"] integerValue] != 50020)
+            return ;
+        NSMutableDictionary *result = [[NSMutableDictionary alloc] initWithDictionary:JSON];
+        [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            [result setValue:obj forKey:key];
+        }];
+        [self _saveLoginUserWithJSON:result];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        
+    }];
+}
+
+- (void)_saveLoginUserWithJSON:(NSDictionary *)json {
+    NSString *userName = [json valueForKey:@"username"];
+    NSString *email = [json valueForKey:@"email"];
+    NSString *password = [json valueForKey:@"password"];
+    NSString *constellation = [json valueForKey:@"constellation"];
+    NSNumber *objectid = [json valueForKey:@"objectid"];
+    
+    __block User *loginUser = nil;
+    [NimbleStore nb_saveInBackground:^(NBContextType contextType) {
+        loginUser = [User nb_createInContextOfType:contextType];
+        loginUser.username = userName;
+        loginUser.password = password;
+        loginUser.email = email;
+        loginUser.objectid = objectid;
+        loginUser.constellation = constellation;
+    } completion:^(NSError *error) {
         [self completed:loginUser];
-    }
+    }];
 }
 
 - (void)registed {
-    [NimbleStore nb_saveInBackground:^(NBContextType contextType) {
-        User *user = [User nb_createInContextOfType:contextType];
-        user.username = self.userName;
-        user.password = self.passwordTextField.text;
-        user.email = self.emailTextField.text;
-        user.objectid = [NSNumber numberWithInt:1];
-        user.constellation = @"天平座";
-        user.createdate = [NSDate date];
-    } completion:^(NSError *error) {
-        User *loginUser = (User *)[User nb_findFirst];
-        [self completed:loginUser];
+    NSString *userName = self.userName;
+    NSString *email = self.emailTextField.text;
+    NSString *password = self.passwordTextField.text;
+    NSString *constellation = self.phoneNumberTextField.text;
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setValue:userName forKey:@"username"];
+    [parameters setValue:email forKey:@"email"];
+    [parameters setValue:password forKey:@"password"];
+    [parameters setValue:constellation forKey:@"constellation"];
+    
+    [[XHApiClient sharedClient] POSTRequestForPathName:@"register.php" parameters:parameters success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"JSON : %@", JSON);
+        if ([[JSON valueForKey:@"result"] integerValue] != 40025)
+            return ;
+        NSMutableDictionary *result = [[NSMutableDictionary alloc] initWithDictionary:JSON];
+        [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            [result setValue:obj forKey:key];
+        }];
+        [self _saveLoginUserWithJSON:result];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"error : %@", error);
     }];
 }
 
@@ -205,8 +249,8 @@
     
     _phoneNumberTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_passwordTextField.frame) + _passwordTextField.frame.origin.y + 2, CGRectGetWidth(_passwordTextField.frame), kXHTextFieldHeigth)];
     _phoneNumberTextField.backgroundColor = [UIColor whiteColor];
-    _phoneNumberTextField.text = @"15915895880";
-    _phoneNumberTextField.placeholder = NSLocalizedString(@"15915895880", @"");
+    _phoneNumberTextField.text = @"天枰座";
+    _phoneNumberTextField.placeholder = NSLocalizedString(@"例如 天枰座", @"");
     [_phoneNumberTextField setKeyboardType:UIKeyboardTypeNamePhonePad];
     _phoneNumberTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [_containerView addSubview:self.phoneNumberTextField];

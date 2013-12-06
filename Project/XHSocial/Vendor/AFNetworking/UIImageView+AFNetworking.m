@@ -184,13 +184,6 @@ static char kAFImageRequestOperationObjectKey;
                        failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error))failure
              usingProgressView:(UIView *)progressView
 {
-    NSMutableDictionary *progress = [[self class] af_sharedProgressViewDictionary];
-    NSMutableDictionary *request = [[self class] af_sharedImageRequestDictionary];
-    NSOperationQueue *queue = [[self class] af_sharedImageRequestOperationQueue];
-    ImageCache *imageCache = [[self class] af_sharedImageCache];
-    NSArray *operations = [queue operations];
-    
-    
     [self cancelImageRequestOperation];
     if (placeholderImage) {
         self.image = placeholderImage;   
@@ -364,8 +357,8 @@ static char kAFImageRequestOperationObjectKey;
     
     
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-    SAFE_ARC_BLOCK_RELEASE(group);
-    SAFE_ARC_BLOCK_RELEASE(semaphore);
+    SDDispatchQueueRelease(group);
+    SDDispatchQueueRelease(semaphore);
     
     return cacheImage;
 }

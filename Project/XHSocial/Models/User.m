@@ -23,4 +23,27 @@
 @dynamic tencent_token_secret;
 @dynamic username;
 
+- (NSDictionary *)JSONToCreateObjectOnServer {
+    NSString *jsonString = nil;
+    NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    self.username, @"username",
+                                    self.password, @"password",
+                                    self.constellation, @"constellation",
+                                    self.email, @"email",
+                                    nil];
+    
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization
+                        dataWithJSONObject:jsonDictionary
+                        options:NSJSONWritingPrettyPrinted
+                        error:&error];
+    if (!jsonData) {
+        NSLog(@"Error creaing jsonData: %@", error);
+    } else {
+        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    
+    return jsonDictionary;
+}
+
 @end
