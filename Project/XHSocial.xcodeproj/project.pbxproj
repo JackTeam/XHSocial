@@ -57,6 +57,22 @@
 		ABD2E86A1850C6670036272F /* XHAccountManagerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD2E8681850C6670036272F /* XHAccountManagerBaseViewController.m */; };
 		ABE2972E1850F860008E8D92 /* XHParallaxNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE2972D1850F860008E8D92 /* XHParallaxNavigationController.m */; };
 		ABE2972F1850F860008E8D92 /* XHParallaxNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE2972D1850F860008E8D92 /* XHParallaxNavigationController.m */; };
+		ABF88CF11851D42600D44420 /* NimbleStore+Defaults.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CDF1851D42600D44420 /* NimbleStore+Defaults.m */; };
+		ABF88CF21851D42600D44420 /* NimbleStore+Defaults.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CDF1851D42600D44420 /* NimbleStore+Defaults.m */; };
+		ABF88CF31851D42600D44420 /* NimbleStore+iCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CE11851D42600D44420 /* NimbleStore+iCloud.m */; };
+		ABF88CF41851D42600D44420 /* NimbleStore+iCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CE11851D42600D44420 /* NimbleStore+iCloud.m */; };
+		ABF88CF51851D42600D44420 /* NimbleStore+Savers.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CE31851D42600D44420 /* NimbleStore+Savers.m */; };
+		ABF88CF61851D42600D44420 /* NimbleStore+Savers.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CE31851D42600D44420 /* NimbleStore+Savers.m */; };
+		ABF88CF71851D42600D44420 /* NSManagedObject+Creators.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CE51851D42600D44420 /* NSManagedObject+Creators.m */; };
+		ABF88CF81851D42600D44420 /* NSManagedObject+Creators.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CE51851D42600D44420 /* NSManagedObject+Creators.m */; };
+		ABF88CF91851D42600D44420 /* NSManagedObject+Finders.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CE71851D42600D44420 /* NSManagedObject+Finders.m */; };
+		ABF88CFA1851D42600D44420 /* NSManagedObject+Finders.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CE71851D42600D44420 /* NSManagedObject+Finders.m */; };
+		ABF88CFB1851D42600D44420 /* NSManagedObjectContext+NimbleContexts.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CE91851D42600D44420 /* NSManagedObjectContext+NimbleContexts.m */; };
+		ABF88CFC1851D42600D44420 /* NSManagedObjectContext+NimbleContexts.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CE91851D42600D44420 /* NSManagedObjectContext+NimbleContexts.m */; };
+		ABF88CFD1851D42600D44420 /* NimbleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CEC1851D42600D44420 /* NimbleStore.m */; };
+		ABF88CFE1851D42600D44420 /* NimbleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CEC1851D42600D44420 /* NimbleStore.m */; };
+		ABF88CFF1851D42600D44420 /* UIDevice+Version.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CF01851D42600D44420 /* UIDevice+Version.m */; };
+		ABF88D001851D42600D44420 /* UIDevice+Version.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CF01851D42600D44420 /* UIDevice+Version.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +128,23 @@
 		ABD2E8681850C6670036272F /* XHAccountManagerBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHAccountManagerBaseViewController.m; sourceTree = "<group>"; };
 		ABE2972C1850F860008E8D92 /* XHParallaxNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHParallaxNavigationController.h; sourceTree = "<group>"; };
 		ABE2972D1850F860008E8D92 /* XHParallaxNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHParallaxNavigationController.m; sourceTree = "<group>"; };
+		ABF88CDE1851D42600D44420 /* NimbleStore+Defaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NimbleStore+Defaults.h"; sourceTree = "<group>"; };
+		ABF88CDF1851D42600D44420 /* NimbleStore+Defaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NimbleStore+Defaults.m"; sourceTree = "<group>"; };
+		ABF88CE01851D42600D44420 /* NimbleStore+iCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NimbleStore+iCloud.h"; sourceTree = "<group>"; };
+		ABF88CE11851D42600D44420 /* NimbleStore+iCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NimbleStore+iCloud.m"; sourceTree = "<group>"; };
+		ABF88CE21851D42600D44420 /* NimbleStore+Savers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NimbleStore+Savers.h"; sourceTree = "<group>"; };
+		ABF88CE31851D42600D44420 /* NimbleStore+Savers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NimbleStore+Savers.m"; sourceTree = "<group>"; };
+		ABF88CE41851D42600D44420 /* NSManagedObject+Creators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Creators.h"; sourceTree = "<group>"; };
+		ABF88CE51851D42600D44420 /* NSManagedObject+Creators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Creators.m"; sourceTree = "<group>"; };
+		ABF88CE61851D42600D44420 /* NSManagedObject+Finders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Finders.h"; sourceTree = "<group>"; };
+		ABF88CE71851D42600D44420 /* NSManagedObject+Finders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Finders.m"; sourceTree = "<group>"; };
+		ABF88CE81851D42600D44420 /* NSManagedObjectContext+NimbleContexts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+NimbleContexts.h"; sourceTree = "<group>"; };
+		ABF88CE91851D42600D44420 /* NSManagedObjectContext+NimbleContexts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+NimbleContexts.m"; sourceTree = "<group>"; };
+		ABF88CEB1851D42600D44420 /* NimbleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NimbleStore.h; sourceTree = "<group>"; };
+		ABF88CEC1851D42600D44420 /* NimbleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NimbleStore.m; sourceTree = "<group>"; };
+		ABF88CED1851D42600D44420 /* Nimble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nimble.h; sourceTree = "<group>"; };
+		ABF88CEF1851D42600D44420 /* UIDevice+Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Version.h"; sourceTree = "<group>"; };
+		ABF88CF01851D42600D44420 /* UIDevice+Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Version.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +328,7 @@
 		ABD2E86B1850CB470036272F /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				ABF88CDC1851D42600D44420 /* Nimble */,
 				ABE2972B1850F860008E8D92 /* XHParallaxNavigationController */,
 			);
 			path = Vendor;
@@ -307,6 +341,54 @@
 				ABE2972D1850F860008E8D92 /* XHParallaxNavigationController.m */,
 			);
 			path = XHParallaxNavigationController;
+			sourceTree = "<group>";
+		};
+		ABF88CDC1851D42600D44420 /* Nimble */ = {
+			isa = PBXGroup;
+			children = (
+				ABF88CDD1851D42600D44420 /* Categories */,
+				ABF88CEA1851D42600D44420 /* Main Store */,
+				ABF88CED1851D42600D44420 /* Nimble.h */,
+				ABF88CEE1851D42600D44420 /* Support */,
+			);
+			path = Nimble;
+			sourceTree = "<group>";
+		};
+		ABF88CDD1851D42600D44420 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				ABF88CDE1851D42600D44420 /* NimbleStore+Defaults.h */,
+				ABF88CDF1851D42600D44420 /* NimbleStore+Defaults.m */,
+				ABF88CE01851D42600D44420 /* NimbleStore+iCloud.h */,
+				ABF88CE11851D42600D44420 /* NimbleStore+iCloud.m */,
+				ABF88CE21851D42600D44420 /* NimbleStore+Savers.h */,
+				ABF88CE31851D42600D44420 /* NimbleStore+Savers.m */,
+				ABF88CE41851D42600D44420 /* NSManagedObject+Creators.h */,
+				ABF88CE51851D42600D44420 /* NSManagedObject+Creators.m */,
+				ABF88CE61851D42600D44420 /* NSManagedObject+Finders.h */,
+				ABF88CE71851D42600D44420 /* NSManagedObject+Finders.m */,
+				ABF88CE81851D42600D44420 /* NSManagedObjectContext+NimbleContexts.h */,
+				ABF88CE91851D42600D44420 /* NSManagedObjectContext+NimbleContexts.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		ABF88CEA1851D42600D44420 /* Main Store */ = {
+			isa = PBXGroup;
+			children = (
+				ABF88CEB1851D42600D44420 /* NimbleStore.h */,
+				ABF88CEC1851D42600D44420 /* NimbleStore.m */,
+			);
+			path = "Main Store";
+			sourceTree = "<group>";
+		};
+		ABF88CEE1851D42600D44420 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				ABF88CEF1851D42600D44420 /* UIDevice+Version.h */,
+				ABF88CF01851D42600D44420 /* UIDevice+Version.m */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,13 +510,21 @@
 			files = (
 				ABD2E8641850C5C20036272F /* XHAccountManagerViewController.m in Sources */,
 				ABD2E8691850C6670036272F /* XHAccountManagerBaseViewController.m in Sources */,
+				ABF88CF51851D42600D44420 /* NimbleStore+Savers.m in Sources */,
+				ABF88CFF1851D42600D44420 /* UIDevice+Version.m in Sources */,
 				AB001331185095E500C0DA6E /* AppDelegate.m in Sources */,
+				ABF88CFB1851D42600D44420 /* NSManagedObjectContext+NimbleContexts.m in Sources */,
 				AB0013581850961700C0DA6E /* XHSocial.xcdatamodeld in Sources */,
+				ABF88CF91851D42600D44420 /* NSManagedObject+Finders.m in Sources */,
 				ABD2E85C1850B0B20036272F /* User.m in Sources */,
 				AB00135E1850967C00C0DA6E /* XHLoginViewController.m in Sources */,
+				ABF88CF11851D42600D44420 /* NimbleStore+Defaults.m in Sources */,
 				ABE2972E1850F860008E8D92 /* XHParallaxNavigationController.m in Sources */,
+				ABF88CF31851D42600D44420 /* NimbleStore+iCloud.m in Sources */,
+				ABF88CFD1851D42600D44420 /* NimbleStore.m in Sources */,
 				AB00132D185095E500C0DA6E /* main.m in Sources */,
 				ABD2E8581850B0940036272F /* TimelineTableViewController.m in Sources */,
+				ABF88CF71851D42600D44420 /* NSManagedObject+Creators.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,12 +532,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF88CFA1851D42600D44420 /* NSManagedObject+Finders.m in Sources */,
 				ABD2E85D1850B0B20036272F /* User.m in Sources */,
 				AB0013591850961700C0DA6E /* XHSocial.xcdatamodeld in Sources */,
 				ABD2E8651850C5C20036272F /* XHAccountManagerViewController.m in Sources */,
 				AB00134A185095E600C0DA6E /* XHSocialTests.m in Sources */,
+				ABF88CF81851D42600D44420 /* NSManagedObject+Creators.m in Sources */,
 				ABE2972F1850F860008E8D92 /* XHParallaxNavigationController.m in Sources */,
+				ABF88CF61851D42600D44420 /* NimbleStore+Savers.m in Sources */,
+				ABF88CFE1851D42600D44420 /* NimbleStore.m in Sources */,
 				ABD2E8591850B0940036272F /* TimelineTableViewController.m in Sources */,
+				ABF88CF41851D42600D44420 /* NimbleStore+iCloud.m in Sources */,
+				ABF88CFC1851D42600D44420 /* NSManagedObjectContext+NimbleContexts.m in Sources */,
+				ABF88D001851D42600D44420 /* UIDevice+Version.m in Sources */,
+				ABF88CF21851D42600D44420 /* NimbleStore+Defaults.m in Sources */,
 				ABD2E86A1850C6670036272F /* XHAccountManagerBaseViewController.m in Sources */,
 				AB00135F1850967C00C0DA6E /* XHLoginViewController.m in Sources */,
 			);
