@@ -10,6 +10,7 @@
 #import "XHLoginViewController.h"
 #import "TimelineTableViewController.h"
 #import "XHParallaxNavigationController.h"
+#import "Nimble.h"
 
 @implementation AppDelegate
 
@@ -18,6 +19,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    [NimbleStore nb_setupStore:nil];
     
     XHLoginViewController *loginViewController = [[XHLoginViewController alloc] init];
     loginViewController.loginCompleted = ^(User *loginUser, UIViewController *didLoginCompleteViewController) {
