@@ -73,6 +73,8 @@
 		ABF88CFE1851D42600D44420 /* NimbleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CEC1851D42600D44420 /* NimbleStore.m */; };
 		ABF88CFF1851D42600D44420 /* UIDevice+Version.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CF01851D42600D44420 /* UIDevice+Version.m */; };
 		ABF88D001851D42600D44420 /* UIDevice+Version.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88CF01851D42600D44420 /* UIDevice+Version.m */; };
+		ABF88D051851DAAA00D44420 /* XHLoginIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88D041851DAAA00D44420 /* XHLoginIconButton.m */; };
+		ABF88D061851DAAA00D44420 /* XHLoginIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF88D041851DAAA00D44420 /* XHLoginIconButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +147,8 @@
 		ABF88CED1851D42600D44420 /* Nimble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nimble.h; sourceTree = "<group>"; };
 		ABF88CEF1851D42600D44420 /* UIDevice+Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Version.h"; sourceTree = "<group>"; };
 		ABF88CF01851D42600D44420 /* UIDevice+Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Version.m"; sourceTree = "<group>"; };
+		ABF88D031851DAAA00D44420 /* XHLoginIconButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLoginIconButton.h; sourceTree = "<group>"; };
+		ABF88D041851DAAA00D44420 /* XHLoginIconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLoginIconButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				AB1BB51918509D8300594B05 /* resource */,
+				ABF88D011851DA8000D44420 /* Views */,
 				ABD2E8661850C6080036272F /* XHAccountManagerHeader.h */,
 				ABD2E8671850C6670036272F /* XHAccountManagerBaseViewController.h */,
 				ABD2E8681850C6670036272F /* XHAccountManagerBaseViewController.m */,
@@ -389,6 +394,23 @@
 				ABF88CF01851D42600D44420 /* UIDevice+Version.m */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		ABF88D011851DA8000D44420 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ABF88D021851DA9E00D44420 /* XHLoginIconButton */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ABF88D021851DA9E00D44420 /* XHLoginIconButton */ = {
+			isa = PBXGroup;
+			children = (
+				ABF88D031851DAAA00D44420 /* XHLoginIconButton.h */,
+				ABF88D041851DAAA00D44420 /* XHLoginIconButton.m */,
+			);
+			path = XHLoginIconButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -514,6 +536,7 @@
 				ABF88CFF1851D42600D44420 /* UIDevice+Version.m in Sources */,
 				AB001331185095E500C0DA6E /* AppDelegate.m in Sources */,
 				ABF88CFB1851D42600D44420 /* NSManagedObjectContext+NimbleContexts.m in Sources */,
+				ABF88D051851DAAA00D44420 /* XHLoginIconButton.m in Sources */,
 				AB0013581850961700C0DA6E /* XHSocial.xcdatamodeld in Sources */,
 				ABF88CF91851D42600D44420 /* NSManagedObject+Finders.m in Sources */,
 				ABD2E85C1850B0B20036272F /* User.m in Sources */,
@@ -547,6 +570,7 @@
 				ABF88D001851D42600D44420 /* UIDevice+Version.m in Sources */,
 				ABF88CF21851D42600D44420 /* NimbleStore+Defaults.m in Sources */,
 				ABD2E86A1850C6670036272F /* XHAccountManagerBaseViewController.m in Sources */,
+				ABF88D061851DAAA00D44420 /* XHLoginIconButton.m in Sources */,
 				AB00135F1850967C00C0DA6E /* XHLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

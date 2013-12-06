@@ -16,6 +16,7 @@ typedef void(^LoginCompleted)(User *loginUser, UIViewController *didLoginComplet
 typedef NS_ENUM(NSInteger, LoginType) {
     kSina = 0,
     kTencent,
+    kUserNameSetter,
     kEmailRegisted,
     kSignin,
     kResetPassword

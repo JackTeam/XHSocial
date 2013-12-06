@@ -10,7 +10,6 @@
 #import "XHLoginViewController.h"
 #import "TimelineTableViewController.h"
 #import "XHParallaxNavigationController.h"
-#import "Nimble.h"
 
 @implementation AppDelegate
 
@@ -22,20 +21,31 @@
     
     [NimbleStore nb_setupStore:nil];
     
-    XHLoginViewController *loginViewController = [[XHLoginViewController alloc] init];
-    loginViewController.loginCompleted = ^(User *loginUser, UIViewController *didLoginCompleteViewController) {
-        
-        TimelineTableViewController *timelineTableViewController = [[TimelineTableViewController alloc] init];
-        timelineTableViewController.loginUser = loginUser;
-        XHParallaxNavigationController *navigationController = [[XHParallaxNavigationController alloc] initWithRootViewController:timelineTableViewController];
-        self.window.rootViewController = navigationController;
-    };
-    
-    XHParallaxNavigationController *navigationController = [[XHParallaxNavigationController alloc] initWithRootViewController:loginViewController];
-    self.window.rootViewController = navigationController;
-    
+    User *loginUser = [User nb_findFirst];
+    if (loginUser) {
+        [self _setupTimelineViewControllerForRootViewController:loginUser];
+    } else {
+        [self _setupLoginViewControllerForRootViewController];
+    }
+
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)_setupLoginViewControllerForRootViewController {
+    XHLoginViewController *loginViewController = [[XHLoginViewController alloc] init];
+    loginViewController.loginCompleted = ^(User *loginUser, UIViewController *didLoginCompleteViewController) {
+        [self _setupTimelineViewControllerForRootViewController:loginUser];
+    };
+    XHParallaxNavigationController *navigationController = [[XHParallaxNavigationController alloc] initWithRootViewController:loginViewController];
+    self.window.rootViewController = navigationController;
+}
+
+- (void)_setupTimelineViewControllerForRootViewController:(User *)loginUser {
+    TimelineTableViewController *timelineTableViewController = [[TimelineTableViewController alloc] init];
+    timelineTableViewController.loginUser = loginUser;
+    XHParallaxNavigationController *navigationController = [[XHParallaxNavigationController alloc] initWithRootViewController:timelineTableViewController];
+    self.window.rootViewController = navigationController;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -7,6 +7,7 @@
 //
 
 #import "XHAccountManagerViewController.h"
+#import "XHLoginIconButton.h"
 
 #define kXHTextFieldHeigth 35
 #define kXHTextFieldPadding 2
@@ -21,26 +22,48 @@
 
 // reisted
 @property (nonatomic, strong) UITextField *phoneNumberTextField;
+@property (nonatomic, strong) XHLoginIconButton *loginIconButton;
 @end
 
 @implementation XHAccountManagerViewController
 
 - (void)completed:(User *)user {
+    NSLog(@"user : %@", user.username);
     if (self.loginCompleted) {
         self.loginCompleted(user, self);
     }
 }
 
 - (void)login {
-    [self completed:nil];
+    User *loginUser = [User nb_findFirst];
+    if ([loginUser.email isEqualToString:self.emailTextField.text] && [loginUser.password isEqualToString:self.passwordTextField.text]) {
+        [self completed:loginUser];
+    }
 }
 
 - (void)registed {
-    [self completed:nil];
+    [NimbleStore nb_saveInBackground:^(NBContextType contextType) {
+        User *user = [User nb_createInContextOfType:contextType];
+        user.username = self.userName;
+        user.password = self.passwordTextField.text;
+        user.email = self.emailTextField.text;
+        user.objectid = [NSNumber numberWithInt:1];
+        user.constellation = @"天平座";
+        user.createdate = [NSDate date];
+    } completion:^(NSError *error) {
+        User *loginUser = (User *)[User nb_findFirst];
+        [self completed:loginUser];
+    }];
 }
 
 - (void)reseted {
-    [self completed:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)registedNextHandle {
+    XHAccountManagerViewController *accountManagerViewController = [self _initalizerAccountManagerViewControllerWithLoginType:kEmailRegisted];
+    accountManagerViewController.userName = self.emailTextField.text;
+    [self.navigationController pushViewController:accountManagerViewController animated:YES];
 }
 
 #pragma mark - Propertys
@@ -55,11 +78,13 @@
 - (void)_initalizerTextFields {
     _emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_containerView.frame), kXHTextFieldHeigth)];
     _emailTextField.backgroundColor = [UIColor whiteColor];
+    _emailTextField.text = @"543413507@qq.com";
     _emailTextField.placeholder = NSLocalizedString(@"example@gmail.com", @"");
     [_emailTextField setKeyboardType:UIKeyboardTypeEmailAddress];
     _emailTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
     _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_emailTextField.frame) + 2, CGRectGetWidth(_containerView.frame), kXHTextFieldHeigth)];
+    _passwordTextField.text = @"123456";
     _passwordTextField.backgroundColor = [UIColor whiteColor];
     _passwordTextField.placeholder = NSLocalizedString(@"密码", @"");
     _passwordTextField.secureTextEntry = YES;
@@ -139,7 +164,32 @@
 
 #pragma mark - 注册相关的代码
 
-- (void)_setupRegistedUI {
+- (void)_setupRegistedUIForUserName {
+    self.title = NSLocalizedString(@"注册", @"");
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"下一步", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(registedNextHandle)];
+    
+    _loginIconButton = [[XHLoginIconButton alloc] initWithFrame:CGRectMake(0, 80, 60, 60)];
+    _loginIconButton.center = CGPointMake(self.view.center.x, _loginIconButton.center.y);
+    [self.view addSubview:self.loginIconButton];
+    
+    // 容器
+    CGRect mainBounds = [[UIScreen mainScreen] bounds];
+    CGFloat width = CGRectGetWidth(mainBounds);
+    CGFloat padding = 10;
+    CGRect containerViewFrame = CGRectMake(padding, CGRectGetHeight(_loginIconButton.frame) + _loginIconButton.frame.origin.y, width - (padding * 2), (kXHTextFieldHeigth + kXHTextFieldPadding));
+    [self _initailizerContainerView:containerViewFrame];
+    [self _initailizerContainerView:containerViewFrame];
+    
+    _emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_containerView.frame), kXHTextFieldHeigth)];
+    _emailTextField.text = @"Jack";
+    _emailTextField.backgroundColor = [UIColor whiteColor];
+    _emailTextField.placeholder = NSLocalizedString(@"example Jack", @"");
+    [_emailTextField setKeyboardType:UIKeyboardTypeEmailAddress];
+    _emailTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    [self.containerView addSubview:self.emailTextField];
+}
+
+- (void)_setupRegistedUIForEmail {
     // 两个文本输入框、一个提示按钮、一个RightItem 登录
     self.title = NSLocalizedString(@"注册", @"");
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"完成", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(registed)];
@@ -155,6 +205,7 @@
     
     _phoneNumberTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_passwordTextField.frame) + _passwordTextField.frame.origin.y + 2, CGRectGetWidth(_passwordTextField.frame), kXHTextFieldHeigth)];
     _phoneNumberTextField.backgroundColor = [UIColor whiteColor];
+    _phoneNumberTextField.text = @"15915895880";
     _phoneNumberTextField.placeholder = NSLocalizedString(@"15915895880", @"");
     [_phoneNumberTextField setKeyboardType:UIKeyboardTypeNamePhonePad];
     _phoneNumberTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -188,6 +239,7 @@
     switch (self.loginType) {
         case kSignin:
         case kEmailRegisted:
+        case kUserNameSetter:
         case kResetPassword:
             [self.emailTextField becomeFirstResponder];
             break;
@@ -219,7 +271,10 @@
             [self _setupResetPasswordUI];
             break;
         case kEmailRegisted:
-            [self _setupRegistedUI];
+            [self _setupRegistedUIForEmail];
+            break;
+        case kUserNameSetter:
+            [self _setupRegistedUIForUserName];
             break;
         default:
             break;

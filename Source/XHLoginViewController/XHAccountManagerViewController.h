@@ -10,5 +10,5 @@
 #import "XHAccountManagerBaseViewController.h"
 
 @interface XHAccountManagerViewController : XHAccountManagerBaseViewController
-
+@property (nonatomic, copy) NSString *userName;
 @end

@@ -26,7 +26,9 @@
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        CGRect tableViewFrame = self.view.bounds;
+        tableViewFrame.origin.y = ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) ? 64 : 0;
+        _tableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStylePlain];
         _tableView.backgroundColor = self.view.backgroundColor;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -37,6 +39,12 @@
 
 #pragma mark - Left cycle init
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+#endif
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.tableView reloadData];
@@ -46,6 +54,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+    [self.navigationController.navigationBar setBarTintColor:[UIColor redColor]];
+#endif
     self.title = NSLocalizedString(@"主页", @"");
     self.view.backgroundColor = [UIColor whiteColor];
 }

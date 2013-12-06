@@ -164,7 +164,7 @@
 	
     // 利用自己的Email授权登录按钮
 	UIButton *emailButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    emailButton.tag = kEmailRegisted;
+    emailButton.tag = kUserNameSetter;
     [emailButton addTarget:self action:@selector(loginHandle:) forControlEvents:UIControlEventTouchUpInside];
     [emailButton setFrame:CGRectMake(10, screen.size.height==568?455:370, 300, 43)];
 	
