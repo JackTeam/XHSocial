@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "XHLoginViewController.h"
 #import "TimelineTableViewController.h"
-#import "XHParallaxNavigationController.h"
 
 @implementation AppDelegate
 
@@ -37,14 +36,14 @@
     loginViewController.loginCompleted = ^(User *loginUser, UIViewController *didLoginCompleteViewController) {
         [self _setupTimelineViewControllerForRootViewController:loginUser];
     };
-    XHParallaxNavigationController *navigationController = [[XHParallaxNavigationController alloc] initWithRootViewController:loginViewController];
+    MenuNavigationController *navigationController = [[MenuNavigationController alloc] initWithRootViewController:loginViewController];
     self.window.rootViewController = navigationController;
 }
 
 - (void)_setupTimelineViewControllerForRootViewController:(User *)loginUser {
     TimelineTableViewController *timelineTableViewController = [[TimelineTableViewController alloc] init];
     timelineTableViewController.loginUser = loginUser;
-    XHParallaxNavigationController *navigationController = [[XHParallaxNavigationController alloc] initWithRootViewController:timelineTableViewController];
+    MenuNavigationController *navigationController = [[MenuNavigationController alloc] initWithRootViewController:timelineTableViewController];
     self.window.rootViewController = navigationController;
 }
 

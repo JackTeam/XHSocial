@@ -19,6 +19,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.extendedLayoutIncludesOpaqueBars = NO;
+    self.modalPresentationCapturesStatusBarAppearance = NO;
+#endif
 }
 
 - (void)didReceiveMemoryWarning

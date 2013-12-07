@@ -12,8 +12,12 @@
 #define kXHTextFieldHeigth 35
 #define kXHTextFieldPadding 2
 
+#define kXHContainerPaddingForTop 16
 
-@interface XHAccountManagerViewController ()
+@interface XHAccountManagerViewController () <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
+@property (nonatomic, assign) PickerUserAvatarType pickerUserAvatarType;
+
 @property (nonatomic, strong) UIView *containerView;
 
 // login
@@ -27,14 +31,14 @@
 
 @implementation XHAccountManagerViewController
 
-- (void)completed:(User *)user {
+- (void)_completed:(User *)user {
     NSLog(@"user : %@", user.username);
     if (self.loginCompleted) {
         self.loginCompleted(user, self);
     }
 }
 
-- (void)login {
+- (void)_login {
     NSString *email = self.emailTextField.text;
     NSString *password = self.passwordTextField.text;
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
@@ -71,11 +75,11 @@
         loginUser.objectid = objectid;
         loginUser.constellation = constellation;
     } completion:^(NSError *error) {
-        [self completed:loginUser];
+        [self _completed:loginUser];
     }];
 }
 
-- (void)registed {
+- (void)_registed {
     NSString *userName = self.userName;
     NSString *email = self.emailTextField.text;
     NSString *password = self.passwordTextField.text;
@@ -100,14 +104,20 @@
     }];
 }
 
-- (void)reseted {
+- (void)_reseted {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)registedNextHandle {
+- (void)_registedNextHandle {
     XHAccountManagerViewController *accountManagerViewController = [self _initalizerAccountManagerViewControllerWithLoginType:kEmailRegisted];
     accountManagerViewController.userName = self.emailTextField.text;
     [self.navigationController pushViewController:accountManagerViewController animated:YES];
+}
+
+- (void)_resignFirstResponderTextFields {
+    [self.emailTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    [self.phoneNumberTextField resignFirstResponder];
 }
 
 #pragma mark - Propertys
@@ -143,6 +153,7 @@
 	UIFont *defaultFont = [UIFont fontWithName:@"HelveticaNeue" size:16.0];
     
     UIButton *resetPasswordButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    resetPasswordButton.backgroundColor = [UIColor clearColor];
     [resetPasswordButton addTarget:self action:@selector(showResetPasswordViewController) forControlEvents:UIControlEventTouchUpInside];
     resetPasswordButton.frame = CGRectMake(10, CGRectGetHeight(_containerView.frame) + _containerView.frame.origin.y + 2, 300, 43);
     
@@ -174,14 +185,19 @@
     [self.view addSubview:self.containerView];
 }
 
+- (void)_initalizerAlertViewWithTitle:(NSString *)title description:(NSString *)description {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:description delegate:nil cancelButtonTitle:nil otherButtonTitles: NSLocalizedString(@"确定", @""), nil];
+    [alertView show];
+}
+
 #pragma mark - 重置相关的代码
 
 - (void)_setupResetPasswordUI {
     // 一个提示label，一个输入框，输入邮箱，一个重置rightItem
     self.title = NSLocalizedString(@"重置", @"");
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"重置", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(reseted)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"重置", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(_reseted)];
     
-    UILabel *resetPasswordWithEmailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 80, 300, 80)];
+    UILabel *resetPasswordWithEmailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, kXHContainerPaddingForTop, 300, 80)];
     resetPasswordWithEmailLabel.font = [UIFont systemFontOfSize:13.0f];
     resetPasswordWithEmailLabel.textAlignment = NSTextAlignmentCenter;
     resetPasswordWithEmailLabel.backgroundColor = [UIColor clearColor];
@@ -208,12 +224,47 @@
 
 #pragma mark - 注册相关的代码
 
+- (void)_showImagePickerViewController:(PickerUserAvatarType)pickerUserAvatarType {
+    [self _resignFirstResponderTextFields];
+    UIImagePickerControllerSourceType sourceType;
+    NSString *description = nil;
+    switch (pickerUserAvatarType) {
+        case kCapturePhoto:
+            sourceType = UIImagePickerControllerSourceTypeCamera;
+            description = NSLocalizedString(@"该设备不支持相机", @"");
+            break;
+        case kLibrary:
+            sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            description = NSLocalizedString(@"该设备不支持图片库", @"");
+            break;
+        default:
+            break;
+    }
+    if (![UIImagePickerController isSourceTypeAvailable:sourceType]) {
+        [self _initalizerAlertViewWithTitle:NSLocalizedString(@"警告", @"") description:description];
+        return;
+    }
+    
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.delegate = self;
+    imagePickerController.allowsEditing = YES;
+    imagePickerController.sourceType = sourceType;
+    imagePickerController.videoQuality = UIImagePickerControllerQualityTypeMedium;
+    [self presentModalViewController:imagePickerController animated:YES];
+}
+
+- (void)_showActionSheet {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"选择你的头像", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"取消", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"拍照", @""), NSLocalizedString(@"选择已有的图片", @""), nil];
+    [actionSheet showInView:self.view];
+}
+
 - (void)_setupRegistedUIForUserName {
     self.title = NSLocalizedString(@"注册", @"");
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"下一步", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(registedNextHandle)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"下一步", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(_registedNextHandle)];
     
-    _loginIconButton = [[XHLoginIconButton alloc] initWithFrame:CGRectMake(0, 80, 60, 60)];
+    _loginIconButton = [[XHLoginIconButton alloc] initWithFrame:CGRectMake(0, kXHContainerPaddingForTop, 80, 80)];
     _loginIconButton.center = CGPointMake(self.view.center.x, _loginIconButton.center.y);
+    [_loginIconButton addTarget:self action:@selector(_showActionSheet) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.loginIconButton];
     
     // 容器
@@ -236,13 +287,13 @@
 - (void)_setupRegistedUIForEmail {
     // 两个文本输入框、一个提示按钮、一个RightItem 登录
     self.title = NSLocalizedString(@"注册", @"");
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"完成", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(registed)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"完成", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(_registed)];
     
     // 容器
     CGRect mainBounds = [[UIScreen mainScreen] bounds];
     CGFloat width = CGRectGetWidth(mainBounds);
     CGFloat padding = 10;
-    CGRect containerViewFrame = CGRectMake(padding, 80, width - (padding * 2), (kXHTextFieldHeigth * 3 + kXHTextFieldPadding * 2));
+    CGRect containerViewFrame = CGRectMake(padding, kXHContainerPaddingForTop, width - (padding * 2), (kXHTextFieldHeigth * 3 + kXHTextFieldPadding * 2));
     [self _initailizerContainerView:containerViewFrame];
     
     [self _initalizerTextFields];
@@ -265,13 +316,13 @@
 - (void)_setupLoginUI {
     // 两个文本输入框、一个提示按钮、一个RightItem 登录
     self.title = NSLocalizedString(@"登录", @"");
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"登录", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(login)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"登录", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(_login)];
     
     // 容器
     CGRect mainBounds = [[UIScreen mainScreen] bounds];
     CGFloat width = CGRectGetWidth(mainBounds);
     CGFloat padding = 10;
-    CGRect containerViewFrame = CGRectMake(padding, 100, width - (padding * 2), (kXHTextFieldHeigth * 2 + kXHTextFieldPadding));
+    CGRect containerViewFrame = CGRectMake(padding, kXHContainerPaddingForTop + 20, width - (padding * 2), (kXHTextFieldHeigth * 2 + kXHTextFieldPadding));
     [self _initailizerContainerView:containerViewFrame];
     [self _initalizerTextFields];
     [self _initalizerResetPasswordButton];
@@ -294,6 +345,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self _setupParallaxNavigationControllerBlock];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -301,9 +353,27 @@
     [self _viewDidAppearHelp];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self _desatyParallaxNavigationControllerBlock];
+}
+
+- (void)_desatyParallaxNavigationControllerBlock {
+    [self addParallaxNavigationControllerMovieBegin:nil];
+}
+
+- (void)_setupParallaxNavigationControllerBlock {
+    __weak typeof(self) weakSelf = self;
+    [self addParallaxNavigationControllerMovieBegin:^(XHParallaxNavigationController *parallaxNavigationController) {
+        [weakSelf.emailTextField resignFirstResponder];
+    }];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
 	// Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithRed:0.413 green:0.339 blue:0.168 alpha:1.000];
     
@@ -336,6 +406,23 @@
     self.emailTextField = nil;
     self.passwordTextField = nil;
     self.phoneNumberTextField = nil;
+}
+
+#pragma mark - UIActionSheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 2)
+        return;
+    
+    [self _showImagePickerViewController:buttonIndex];
+}
+
+#pragma mark - UIImagePickerViewController delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *userAvatar = [info valueForKey:UIImagePickerControllerEditedImage];
+    [self.loginIconButton setImage:userAvatar forState:UIControlStateNormal];
+    [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

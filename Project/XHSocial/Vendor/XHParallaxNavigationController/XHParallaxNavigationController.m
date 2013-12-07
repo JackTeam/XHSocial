@@ -27,10 +27,12 @@
     UIImage *captureImg;
 }
 
-@property (nonatomic,retain) UIView *backgroundView;
-@property (nonatomic,retain) NSMutableArray *screenShotsList;
+@property (nonatomic, strong) UIView *backgroundView;
+@property (nonatomic, strong) NSMutableArray *screenShotsList;
 
-@property (nonatomic,assign) BOOL isMoving;
+@property (nonatomic, assign) BOOL isMoving;
+
+@property (nonatomic, assign) BOOL isTouchBegin;
 
 @end
 
@@ -80,8 +82,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_0
     self.interactivePopGestureRecognizer.enabled = NO;
 #endif
     
@@ -286,7 +287,7 @@
     CGPoint touchPoint = [recoginzer locationInView:KEY_WINDOW];
     
     if (recoginzer.state == UIGestureRecognizerStateBegan) {
-        
+        self.isTouchBegin = YES;
         _isMoving = YES;
         startTouch = touchPoint;
         
@@ -320,7 +321,10 @@
         [self.backgroundView insertSubview:lastScreenShotView belowSubview:blackMask];
         
     }else if (recoginzer.state == UIGestureRecognizerStateEnded){
-        
+        self.isTouchBegin = NO;
+        if (self.parallaxNavigationControllerMovieEnd) {
+            self.parallaxNavigationControllerMovieEnd(self);
+        }
         if (touchPoint.x - startTouch.x > 50)
         {
             [UIView animateWithDuration:0.3 animations:^{
@@ -347,8 +351,11 @@
         }
         return;
         
-    }else if (recoginzer.state == UIGestureRecognizerStateCancelled){
-        
+    } else if (recoginzer.state == UIGestureRecognizerStateCancelled){
+        self.isTouchBegin = NO;
+        if (self.parallaxNavigationControllerMovieCancel) {
+            self.parallaxNavigationControllerMovieCancel(self);
+        }
         [UIView animateWithDuration:0.3 animations:^{
             [self moveViewWithX:0];
         } completion:^(BOOL finished) {
@@ -360,13 +367,34 @@
     }
     
     if (_isMoving) {
-        [self moveViewWithX:touchPoint.x - startTouch.x];
+        CGFloat distans = touchPoint.x - startTouch.x;
+        [self moveViewWithX:distans];
+        if (distans > 0) {
+            if (!self.isTouchBegin)
+                return;
+            if (self.parallaxNavigationControllerMovieBegin) {
+                self.parallaxNavigationControllerMovieBegin(self);
+            }
+            self.isTouchBegin = NO;
+        }
     }
 }
 
 @end
 
 @implementation UIViewController (XHParallaxNavigationController)
+
+- (void)addParallaxNavigationControllerMovieBegin:(ParallaxNavigationControllerMovieBegin)parallaxNavigationControllerMovieBegin {
+    self.xh_parallaxNavigationController.parallaxNavigationControllerMovieBegin = parallaxNavigationControllerMovieBegin;
+}
+
+- (void)addParallaxNavigationControllerMovieEnd:(ParallaxNavigationControllerMovieEnd)parallaxNavigationControllerMovieEnd {
+    self.xh_parallaxNavigationController.parallaxNavigationControllerMovieEnd = parallaxNavigationControllerMovieEnd;
+}
+
+- (void)addParallaxNavigationControllerMovieCancel:(ParallaxNavigationControllerMovieCancel)parallaxNavigationControllerMovieCancel {
+    self.xh_parallaxNavigationController.parallaxNavigationControllerMovieCancel = parallaxNavigationControllerMovieCancel;
+}
 
 - (XHParallaxNavigationController *)xh_parallaxNavigationController {
     XHParallaxNavigationController *navigationController = nil;

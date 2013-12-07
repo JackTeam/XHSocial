@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
 #import "User.h"
 
-@interface TimelineTableViewController : UIViewController
+@interface TimelineTableViewController : RootViewController
 @property (nonatomic, strong) User *loginUser;
 @end

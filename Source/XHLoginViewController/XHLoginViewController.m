@@ -66,6 +66,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -82,7 +83,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
     
 	// Do any additional setup after loading the view.
     CGRect screen = [[UIScreen mainScreen] bounds];
@@ -195,7 +196,8 @@
 	attributesBold = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[UIColor whiteColor], boldFont, nil] forKeys:[NSArray arrayWithObjects:NSForegroundColorAttributeName, NSFontAttributeName, nil]];
 	
     // 提示用户进行注册的按钮
-	UIButton *signInButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	UIButton *signInButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    signInButton.backgroundColor = [UIColor clearColor];
     signInButton.tag = kSignin;
     [signInButton addTarget:self action:@selector(loginHandle:) forControlEvents:UIControlEventTouchUpInside];
     [signInButton setFrame:CGRectMake(10, screen.size.height==568?500:410, 300, 43)];

@@ -51,6 +51,20 @@
 		AB2E59331851EF20005BD1C6 /* NSManagedObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2E59311851EF20005BD1C6 /* NSManagedObject+JSON.m */; };
 		AB2E59351851F138005BD1C6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2E59341851F138005BD1C6 /* SystemConfiguration.framework */; };
 		AB2E59371851F140005BD1C6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2E59361851F140005BD1C6 /* MobileCoreServices.framework */; };
+		AB35EEA01852740C00A1CF93 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EE971852740C00A1CF93 /* RECommonFunctions.m */; };
+		AB35EEA11852740D00A1CF93 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EE971852740C00A1CF93 /* RECommonFunctions.m */; };
+		AB35EEA21852740D00A1CF93 /* REMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EE991852740C00A1CF93 /* REMenu.m */; };
+		AB35EEA31852740D00A1CF93 /* REMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EE991852740C00A1CF93 /* REMenu.m */; };
+		AB35EEA41852740D00A1CF93 /* REMenuContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EE9B1852740C00A1CF93 /* REMenuContainerView.m */; };
+		AB35EEA51852740D00A1CF93 /* REMenuContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EE9B1852740C00A1CF93 /* REMenuContainerView.m */; };
+		AB35EEA61852740D00A1CF93 /* REMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EE9D1852740C00A1CF93 /* REMenuItem.m */; };
+		AB35EEA71852740D00A1CF93 /* REMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EE9D1852740C00A1CF93 /* REMenuItem.m */; };
+		AB35EEA81852740D00A1CF93 /* REMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EE9F1852740C00A1CF93 /* REMenuItemView.m */; };
+		AB35EEA91852740D00A1CF93 /* REMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EE9F1852740C00A1CF93 /* REMenuItemView.m */; };
+		AB35EEAD185274B600A1CF93 /* MenuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EEAC185274B600A1CF93 /* MenuNavigationController.m */; };
+		AB35EEAE185274B600A1CF93 /* MenuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EEAC185274B600A1CF93 /* MenuNavigationController.m */; };
+		AB35EEB21852752200A1CF93 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EEB11852752200A1CF93 /* RootViewController.m */; };
+		AB35EEB31852752200A1CF93 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EEB11852752200A1CF93 /* RootViewController.m */; };
 		ABD2E8581850B0940036272F /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD2E8571850B0940036272F /* TimelineTableViewController.m */; };
 		ABD2E8591850B0940036272F /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD2E8571850B0940036272F /* TimelineTableViewController.m */; };
 		ABD2E85C1850B0B20036272F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD2E85B1850B0B20036272F /* User.m */; };
@@ -159,6 +173,20 @@
 		AB2E59311851EF20005BD1C6 /* NSManagedObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+JSON.m"; sourceTree = "<group>"; };
 		AB2E59341851F138005BD1C6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AB2E59361851F140005BD1C6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		AB35EE961852740C00A1CF93 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		AB35EE971852740C00A1CF93 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		AB35EE981852740C00A1CF93 /* REMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenu.h; sourceTree = "<group>"; };
+		AB35EE991852740C00A1CF93 /* REMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenu.m; sourceTree = "<group>"; };
+		AB35EE9A1852740C00A1CF93 /* REMenuContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenuContainerView.h; sourceTree = "<group>"; };
+		AB35EE9B1852740C00A1CF93 /* REMenuContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenuContainerView.m; sourceTree = "<group>"; };
+		AB35EE9C1852740C00A1CF93 /* REMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenuItem.h; sourceTree = "<group>"; };
+		AB35EE9D1852740C00A1CF93 /* REMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenuItem.m; sourceTree = "<group>"; };
+		AB35EE9E1852740C00A1CF93 /* REMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenuItemView.h; sourceTree = "<group>"; };
+		AB35EE9F1852740C00A1CF93 /* REMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenuItemView.m; sourceTree = "<group>"; };
+		AB35EEAB185274B600A1CF93 /* MenuNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuNavigationController.h; sourceTree = "<group>"; };
+		AB35EEAC185274B600A1CF93 /* MenuNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuNavigationController.m; sourceTree = "<group>"; };
+		AB35EEB01852752200A1CF93 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		AB35EEB11852752200A1CF93 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		ABD2E8561850B0940036272F /* TimelineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineTableViewController.h; sourceTree = "<group>"; };
 		ABD2E8571850B0940036272F /* TimelineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineTableViewController.m; sourceTree = "<group>"; };
 		ABD2E85A1850B0B20036272F /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -340,6 +368,8 @@
 		AB0013531850961700C0DA6E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AB35EEAF1852751500A1CF93 /* RootViewController */,
+				AB35EEAA185274A000A1CF93 /* MenuNavigationController */,
 				ABD2E8551850B08B0036272F /* TimelineTableViewController */,
 			);
 			path = Controllers;
@@ -414,6 +444,41 @@
 			path = Categorys;
 			sourceTree = "<group>";
 		};
+		AB35EE951852740C00A1CF93 /* REMenu */ = {
+			isa = PBXGroup;
+			children = (
+				AB35EE961852740C00A1CF93 /* RECommonFunctions.h */,
+				AB35EE971852740C00A1CF93 /* RECommonFunctions.m */,
+				AB35EE981852740C00A1CF93 /* REMenu.h */,
+				AB35EE991852740C00A1CF93 /* REMenu.m */,
+				AB35EE9A1852740C00A1CF93 /* REMenuContainerView.h */,
+				AB35EE9B1852740C00A1CF93 /* REMenuContainerView.m */,
+				AB35EE9C1852740C00A1CF93 /* REMenuItem.h */,
+				AB35EE9D1852740C00A1CF93 /* REMenuItem.m */,
+				AB35EE9E1852740C00A1CF93 /* REMenuItemView.h */,
+				AB35EE9F1852740C00A1CF93 /* REMenuItemView.m */,
+			);
+			path = REMenu;
+			sourceTree = "<group>";
+		};
+		AB35EEAA185274A000A1CF93 /* MenuNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				AB35EEAB185274B600A1CF93 /* MenuNavigationController.h */,
+				AB35EEAC185274B600A1CF93 /* MenuNavigationController.m */,
+			);
+			path = MenuNavigationController;
+			sourceTree = "<group>";
+		};
+		AB35EEAF1852751500A1CF93 /* RootViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AB35EEB01852752200A1CF93 /* RootViewController.h */,
+				AB35EEB11852752200A1CF93 /* RootViewController.m */,
+			);
+			path = RootViewController;
+			sourceTree = "<group>";
+		};
 		ABD2E8551850B08B0036272F /* TimelineTableViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +491,7 @@
 		ABD2E86B1850CB470036272F /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				AB35EE951852740C00A1CF93 /* REMenu */,
 				ABF9EE5C18522AC200A7288A /* AFNetworking */,
 				ABF88CDC1851D42600D44420 /* Nimble */,
 				ABE2972B1850F860008E8D92 /* XHParallaxNavigationController */,
@@ -696,21 +762,27 @@
 				AB001331185095E500C0DA6E /* AppDelegate.m in Sources */,
 				ABF88CFB1851D42600D44420 /* NSManagedObjectContext+NimbleContexts.m in Sources */,
 				ABF88D051851DAAA00D44420 /* XHLoginIconButton.m in Sources */,
+				AB35EEB21852752200A1CF93 /* RootViewController.m in Sources */,
 				ABF9EE8218522AC200A7288A /* AFImageRequestOperation.m in Sources */,
 				AB0013581850961700C0DA6E /* XHSocial.xcdatamodeld in Sources */,
 				ABF88CF91851D42600D44420 /* NSManagedObject+Finders.m in Sources */,
 				ABF9EE8C18522AC200A7288A /* AFXMLRequestOperation.m in Sources */,
 				ABF9EE8018522AC200A7288A /* AFImageCache.m in Sources */,
 				ABF9EE7C18522AC200A7288A /* AFHTTPClient.m in Sources */,
+				AB35EEA61852740D00A1CF93 /* REMenuItem.m in Sources */,
 				ABF9EE8618522AC200A7288A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				ABD2E85C1850B0B20036272F /* User.m in Sources */,
+				AB35EEA81852740D00A1CF93 /* REMenuItemView.m in Sources */,
 				ABF9EE8818522AC200A7288A /* AFPropertyListRequestOperation.m in Sources */,
 				ABF9EE8E18522AC200A7288A /* DACircularProgressView.m in Sources */,
 				ABF9EE9618522AC200A7288A /* UIImage+GIF.m in Sources */,
+				AB35EEAD185274B600A1CF93 /* MenuNavigationController.m in Sources */,
+				AB35EEA01852740C00A1CF93 /* RECommonFunctions.m in Sources */,
 				AB00135E1850967C00C0DA6E /* XHLoginViewController.m in Sources */,
 				ABF9EE9818522AC200A7288A /* UIImageView+AFNetworking.m in Sources */,
 				ABF9EE9418522AC200A7288A /* SDWebImageDecoder.m in Sources */,
 				ABF9EEA0185233E100A7288A /* XHApiClient.m in Sources */,
+				AB35EEA21852740D00A1CF93 /* REMenu.m in Sources */,
 				ABF88CF11851D42600D44420 /* NimbleStore+Defaults.m in Sources */,
 				ABE2972E1850F860008E8D92 /* XHParallaxNavigationController.m in Sources */,
 				ABF9EE9018522AC200A7288A /* NSData+GIF.m in Sources */,
@@ -718,6 +790,7 @@
 				AB2E59321851EF20005BD1C6 /* NSManagedObject+JSON.m in Sources */,
 				ABF88CF31851D42600D44420 /* NimbleStore+iCloud.m in Sources */,
 				ABF88CFD1851D42600D44420 /* NimbleStore.m in Sources */,
+				AB35EEA41852740D00A1CF93 /* REMenuContainerView.m in Sources */,
 				ABF9EE7E18522AC200A7288A /* AFHTTPRequestOperation.m in Sources */,
 				AB00132D185095E500C0DA6E /* main.m in Sources */,
 				ABD2E8581850B0940036272F /* TimelineTableViewController.m in Sources */,
@@ -732,16 +805,21 @@
 			files = (
 				ABF88CFA1851D42600D44420 /* NSManagedObject+Finders.m in Sources */,
 				ABD2E85D1850B0B20036272F /* User.m in Sources */,
+				AB35EEA91852740D00A1CF93 /* REMenuItemView.m in Sources */,
 				ABF9EE7D18522AC200A7288A /* AFHTTPClient.m in Sources */,
 				ABF9EE8318522AC200A7288A /* AFImageRequestOperation.m in Sources */,
 				AB0013591850961700C0DA6E /* XHSocial.xcdatamodeld in Sources */,
 				ABF9EE8118522AC200A7288A /* AFImageCache.m in Sources */,
+				AB35EEA11852740D00A1CF93 /* RECommonFunctions.m in Sources */,
+				AB35EEB31852752200A1CF93 /* RootViewController.m in Sources */,
 				ABD2E8651850C5C20036272F /* XHAccountManagerViewController.m in Sources */,
 				AB00134A185095E600C0DA6E /* XHSocialTests.m in Sources */,
 				ABF9EE8F18522AC200A7288A /* DACircularProgressView.m in Sources */,
 				ABF88CF81851D42600D44420 /* NSManagedObject+Creators.m in Sources */,
 				AB2E59331851EF20005BD1C6 /* NSManagedObject+JSON.m in Sources */,
 				ABF9EE8D18522AC200A7288A /* AFXMLRequestOperation.m in Sources */,
+				AB35EEA51852740D00A1CF93 /* REMenuContainerView.m in Sources */,
+				AB35EEA71852740D00A1CF93 /* REMenuItem.m in Sources */,
 				ABE2972F1850F860008E8D92 /* XHParallaxNavigationController.m in Sources */,
 				ABF9EE9918522AC200A7288A /* UIImageView+AFNetworking.m in Sources */,
 				ABF88CF61851D42600D44420 /* NimbleStore+Savers.m in Sources */,
@@ -760,9 +838,11 @@
 				ABF88D001851D42600D44420 /* UIDevice+Version.m in Sources */,
 				ABF88CF21851D42600D44420 /* NimbleStore+Defaults.m in Sources */,
 				ABF9EEA1185233E100A7288A /* XHApiClient.m in Sources */,
+				AB35EEA31852740D00A1CF93 /* REMenu.m in Sources */,
 				ABD2E86A1850C6670036272F /* XHAccountManagerBaseViewController.m in Sources */,
 				ABF88D061851DAAA00D44420 /* XHLoginIconButton.m in Sources */,
 				AB00135F1850967C00C0DA6E /* XHLoginViewController.m in Sources */,
+				AB35EEAE185274B600A1CF93 /* MenuNavigationController.m in Sources */,
 				ABF9EE9318522AC200A7288A /* SDWebImageCompat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -874,6 +954,7 @@
 		AB00134E185095E600C0DA6E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -884,6 +965,7 @@
 					"${SDK_DIR}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "XHSocial/XHSocial-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -893,6 +975,7 @@
 		AB00134F185095E600C0DA6E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -903,6 +986,7 @@
 					"${SDK_DIR}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "XHSocial/XHSocial-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;

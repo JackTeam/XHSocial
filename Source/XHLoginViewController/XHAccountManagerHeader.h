@@ -13,6 +13,11 @@
 
 typedef void(^LoginCompleted)(User *loginUser, UIViewController *didLoginCompleteViewController);
 
+typedef NS_ENUM(NSInteger, PickerUserAvatarType) {
+    kCapturePhoto = 0,
+    kLibrary
+};
+
 typedef NS_ENUM(NSInteger, LoginType) {
     kSina = 0,
     kTencent,

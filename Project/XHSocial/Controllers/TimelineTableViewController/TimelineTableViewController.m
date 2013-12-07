@@ -27,7 +27,6 @@
 - (UITableView *)tableView {
     if (!_tableView) {
         CGRect tableViewFrame = self.view.bounds;
-        tableViewFrame.origin.y = ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) ? 64 : 0;
         _tableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStylePlain];
         _tableView.backgroundColor = self.view.backgroundColor;
         _tableView.delegate = self;
@@ -55,7 +54,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
-    [self.navigationController.navigationBar setBarTintColor:[UIColor redColor]];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0/255.0 green:213/255.0 blue:161/255.0 alpha:1]];
 #endif
     self.title = NSLocalizedString(@"主页", @"");
     self.view.backgroundColor = [UIColor whiteColor];
