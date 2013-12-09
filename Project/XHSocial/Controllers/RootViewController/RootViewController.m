@@ -19,11 +19,11 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithWhite:0.902 alpha:1.000];
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.extendedLayoutIncludesOpaqueBars = NO;
-    self.modalPresentationCapturesStatusBarAppearance = NO;
-#endif
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.modalPresentationCapturesStatusBarAppearance = NO;
+    }
     // Here self.navigationController is an instance of NavigationViewController (which is a root controller for the main window)
     //
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self.navigationController action:@selector(toggleMenu)];

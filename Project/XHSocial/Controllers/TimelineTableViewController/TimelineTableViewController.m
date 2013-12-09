@@ -53,9 +53,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0/255.0 green:213/255.0 blue:161/255.0 alpha:1]];
-#endif
+    if ([self respondsToSelector:@selector(setBarTintColor:)])
+        [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0/255.0 green:213/255.0 blue:161/255.0 alpha:1]];
     self.title = NSLocalizedString(@"主页", @"");
     self.view.backgroundColor = [UIColor whiteColor];
 }
