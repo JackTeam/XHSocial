@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  
+ 
+ #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+ #endif
+ 这个判断方式只对方法或者属性定义之类进行，而不是函数内的具体方法和属性设置进行判断
+ */
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
