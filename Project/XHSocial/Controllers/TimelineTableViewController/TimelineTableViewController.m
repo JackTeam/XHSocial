@@ -7,6 +7,7 @@
 //
 
 #import "TimelineTableViewController.h"
+#import "TimelineCell.h"
 
 @interface TimelineTableViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -19,7 +20,7 @@
 
 - (NSArray *)timeLines {
     if (!_timeLines) {
-        _timeLines = [[NSArray alloc] initWithObjects:@"曾宪华一号", @"曾宪华二号", @"曾宪华三号", @"曾宪华四号", @"曾宪华五号", @"曾宪华六号", nil];
+        _timeLines = [[NSArray alloc] init];
     }
     return _timeLines;
 }
@@ -44,9 +45,18 @@
 }
 #endif
 
+- (void)loadDataSource {
+    dispatch_async(dispatch_queue_create("Users", NULL), ^{
+        self.timeLines = [User nb_findAll];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    });
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.tableView reloadData];
+    [self loadDataSource];
 }
 
 - (void)viewDidLoad
@@ -77,11 +87,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"cellIdentifier";
-    UITableViewCell *timeLineCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    TimelineCell *timeLineCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!timeLineCell) {
-        timeLineCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        timeLineCell = [[TimelineCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    timeLineCell.textLabel.text = [self.timeLines objectAtIndex:indexPath.row];
+    User *user = self.timeLines[indexPath.row];
+    timeLineCell.user = user;
     
     return timeLineCell;
 }

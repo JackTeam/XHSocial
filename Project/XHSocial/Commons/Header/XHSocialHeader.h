@@ -9,7 +9,7 @@
 #ifndef XHSocial_XHSocialHeader_h
 #define XHSocial_XHSocialHeader_h
 
-static NSString * const kAPIBaseURLString = @"http://192.168.1.2/XHSocial/"; // http://192.168.1.35 http://192.168.1.35
+static NSString * const kAPIBaseURLString = @"http://192.168.1.35/XHSocial/"; // http://192.168.1.35 http://192.168.1.35
 #define kTimeoutInterval 30.0f
 
 #import "Nimble.h"

@@ -65,6 +65,8 @@
 		AB35EEAE185274B600A1CF93 /* MenuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EEAC185274B600A1CF93 /* MenuNavigationController.m */; };
 		AB35EEB21852752200A1CF93 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EEB11852752200A1CF93 /* RootViewController.m */; };
 		AB35EEB31852752200A1CF93 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB35EEB11852752200A1CF93 /* RootViewController.m */; };
+		ABA5D7FB185762E8006CA130 /* TimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA5D7FA185762E8006CA130 /* TimelineCell.m */; };
+		ABA5D7FC185762E8006CA130 /* TimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA5D7FA185762E8006CA130 /* TimelineCell.m */; };
 		ABD2E8581850B0940036272F /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD2E8571850B0940036272F /* TimelineTableViewController.m */; };
 		ABD2E8591850B0940036272F /* TimelineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD2E8571850B0940036272F /* TimelineTableViewController.m */; };
 		ABD2E85C1850B0B20036272F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD2E85B1850B0B20036272F /* User.m */; };
@@ -187,6 +189,8 @@
 		AB35EEAC185274B600A1CF93 /* MenuNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuNavigationController.m; sourceTree = "<group>"; };
 		AB35EEB01852752200A1CF93 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		AB35EEB11852752200A1CF93 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		ABA5D7F9185762E8006CA130 /* TimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineCell.h; sourceTree = "<group>"; };
+		ABA5D7FA185762E8006CA130 /* TimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineCell.m; sourceTree = "<group>"; };
 		ABD2E8561850B0940036272F /* TimelineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineTableViewController.h; sourceTree = "<group>"; };
 		ABD2E8571850B0940036272F /* TimelineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineTableViewController.m; sourceTree = "<group>"; };
 		ABD2E85A1850B0B20036272F /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -388,6 +392,8 @@
 		AB0013571850961700C0DA6E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ABA5D7F9185762E8006CA130 /* TimelineCell.h */,
+				ABA5D7FA185762E8006CA130 /* TimelineCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -783,6 +789,7 @@
 				ABF9EE9418522AC200A7288A /* SDWebImageDecoder.m in Sources */,
 				ABF9EEA0185233E100A7288A /* XHApiClient.m in Sources */,
 				AB35EEA21852740D00A1CF93 /* REMenu.m in Sources */,
+				ABA5D7FB185762E8006CA130 /* TimelineCell.m in Sources */,
 				ABF88CF11851D42600D44420 /* NimbleStore+Defaults.m in Sources */,
 				ABE2972E1850F860008E8D92 /* XHParallaxNavigationController.m in Sources */,
 				ABF9EE9018522AC200A7288A /* NSData+GIF.m in Sources */,
@@ -835,6 +842,7 @@
 				ABF9EE9518522AC200A7288A /* SDWebImageDecoder.m in Sources */,
 				ABF9EE9118522AC200A7288A /* NSData+GIF.m in Sources */,
 				ABF88CFC1851D42600D44420 /* NSManagedObjectContext+NimbleContexts.m in Sources */,
+				ABA5D7FC185762E8006CA130 /* TimelineCell.m in Sources */,
 				ABF88D001851D42600D44420 /* UIDevice+Version.m in Sources */,
 				ABF88CF21851D42600D44420 /* NimbleStore+Defaults.m in Sources */,
 				ABF9EEA1185233E100A7288A /* XHApiClient.m in Sources */,
