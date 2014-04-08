@@ -82,9 +82,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_0
-    self.interactivePopGestureRecognizer.enabled = NO;
-#endif
+    
+    if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)])
+        self.interactivePopGestureRecognizer.enabled = NO;
     
     self.view.layer.shadowColor = [[UIColor blackColor]CGColor];
     self.view.layer.shadowOffset = CGSizeMake(5, 5);

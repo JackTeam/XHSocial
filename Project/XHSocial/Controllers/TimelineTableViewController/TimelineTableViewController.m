@@ -100,7 +100,7 @@
 #pragma mark - UITableView delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self.navigationController pushViewController:[[[self class] alloc] init] animated:YES];
 }
 
 @end
